@@ -6,10 +6,10 @@ module.exports = {
     es6: true,
   },
   // 使用的扩展库
-  extends: ['plugin:react/recommended', 'airbnb', 'eslint:recommended'],
-  plugins: ['react'],
+  extends: ['plugin:react/recommended', 'airbnb', 'plugin:@typescript-eslint/recommended', 'eslint:recommended'],
+  plugins: ['react', '@typescript-eslint'],
   parserOptions: {
-    parser: 'babel-eslint', // 解析器用于解析代码
+    parser: '@typescript-eslint/parser', // 解析器用于解析代码
     ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
@@ -36,6 +36,8 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx', '.ts'] }],
     'jsx-quotes': 0,
     'react/jsx-one-expression-per-line': 0,
+
+    indent: 0, // 用于 'plugin:@typescript-eslint/recommended' 后，书写变量 const var let ，eslint报错
 
   },
 };
