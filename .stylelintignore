@@ -1,0 +1,10 @@
+/dist/
+/test/
+*.min.css
+*.js
+*.ts
+*.png
+*.jpg
+*.webp
+*.ttf
+*.woff

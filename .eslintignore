@@ -1,0 +1,9 @@
+.vscode
+.husky
+
+build
+src/assets
+public
+dist
+src/reportWebVitals.ts
+src/App.test.tsx
