@@ -1,4 +1,4 @@
-import { DatePicker } from 'antd';
+import { DatePicker, Button } from 'antd';
 import logo from './logo.svg';
 import './App.css';
 // import 'antd/dist/antd.min.css';
@@ -7,6 +7,7 @@ function App() {
   return (
     <div className='app'>
       <DatePicker />
+      <Button>提交</Button>
       <header className='app-header'>
         <img src={logo} className='app-logo' alt='logo' />
         <p>
