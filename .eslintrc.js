@@ -38,8 +38,15 @@ module.exports = {
     'react/jsx-one-expression-per-line': 0,
 
     indent: 0, // 用于 'plugin:@typescript-eslint/recommended' 后，书写变量 const var let ，eslint报错
-    'comma-dangle': [2, 'never'], // 对象字面量项尾不能有逗号
+    'comma-dangle': 'off', // 对象字面量项尾不能有逗号
     'import/extensions': 'off',
-    '@typescript-eslint/no-var-requires': 'off' // commonjs require引入依赖报错
+    '@typescript-eslint/no-var-requires': 'off', // commonjs require引入依赖报错
+    'import/no-unresolved': [ // @ 导入模块问题
+      2,
+      {
+        ignore: ['^@/'],
+      },
+    ],
+    'react/function-component-definition': [2, { namedComponents: 'arrow-function' }] // 定义统一的组件定义-箭头函数组件
   }
 };
