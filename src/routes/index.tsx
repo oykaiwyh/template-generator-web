@@ -1,15 +1,27 @@
-import { Navigate, RouteObject } from 'react-router-dom';
-import Home from '@/pages/Home';
+import { RouteObject } from 'react-router-dom';
+import { lazy } from 'react';
 import Editor from '@/pages/Editor';
+import PageLayout from '@/components/Layout';
+
+const Home = lazy(() => import(/* webpackChunkName: "Home" */ '@/pages/Home'));
+const Template = lazy(
+  () => import(/* webpackChunkName: "Template" */ '@/pages/Template')
+);
 
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <Navigate to='/home' />,
-  },
-  {
-    path: '/home',
-    element: <Home />,
+    element: <PageLayout />,
+    children: [
+      {
+        path: '',
+        element: <Home />,
+      },
+      {
+        path: '/template/:id',
+        element: <Template />,
+      },
+    ],
   },
   {
     path: '/editor',

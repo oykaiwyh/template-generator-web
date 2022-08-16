@@ -68,6 +68,6 @@
     "stylelint-config-standard-scss": "^5.0.0"
   },
   "antdTheme": {
-    "@primary-color": "yellow"
+    "@primary-color": "#1890ff"
   }
 }
