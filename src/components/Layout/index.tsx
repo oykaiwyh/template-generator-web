@@ -9,7 +9,7 @@ const PageLayout = () => {
   console.log('--PageLayout--');
 
   return (
-    <Layout style={{ height: '100%' }}>
+    <Layout>
       <Header>
         <HeaderPage />
       </Header>
