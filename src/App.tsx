@@ -5,7 +5,7 @@ import { routes } from './routes';
 
 const App = () => {
   const RouterView = useRoutes(routes);
-  return <div>{RouterView}</div>;
+  return <div style={{ height: '100%' }}>{RouterView}</div>;
 };
 
 export default App;
