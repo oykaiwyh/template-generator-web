@@ -13,7 +13,7 @@ const PageLayout = () => {
       <Header>
         <HeaderPage />
       </Header>
-      <Content>
+      <Content style={{ background: '#fff' }}>
         <RouterView />
       </Content>
       <Footer

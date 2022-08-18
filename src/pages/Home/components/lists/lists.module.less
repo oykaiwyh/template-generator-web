@@ -1,4 +1,9 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
 .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 24px 30px;
   background: #fff;
 }
 
@@ -32,11 +37,12 @@
 .list-info {
   display: flex;
   width: 100%;
-  padding: 20px 40px;
+  padding: 20px 0;
 
   .mantle {
     position: absolute;
     top: 0;
+    left: 0;
     z-index: 1;
     display: flex;
     align-items: center;
@@ -44,5 +50,54 @@
     width: 100%;
     height: 100%;
     background: rgb(0 0 0 / 80%);
+  }
+}
+
+.bottom-title {
+  margin-bottom: 0 !important;
+  padding: 10px 12px;
+  color: #333;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.bottom-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 12px;
+  color: #999;
+
+  span[datatype="person"] {
+    font-weight: bold;
+  }
+}
+
+.list-antd-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+
+  :global(.ant-card-body) {
+    // padding: 0 !important;
+    padding: 24px 0;
+  }
+
+  :global(.ant-card-cover) {
+    height: 390px;
+    margin-right: 0;
+  }
+
+  :global(.ant-card-meta) {
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    background: #fff;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+
+  :global(.ant-card-meta-detail) {
+    width: 100%;
   }
 }

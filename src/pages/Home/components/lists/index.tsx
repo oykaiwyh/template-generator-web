@@ -1,6 +1,11 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import { Button, Card, Col, Row } from 'antd';
 import { useState } from 'react';
+import { UserOutlined } from '@ant-design/icons';
 import styles from './lists.module.less';
+import testImg from '@/assets/Home/test.png';
+
+const { Meta } = Card;
 
 const ListTitle = () => (
   <div className={styles.title}>
@@ -11,31 +16,47 @@ const ListTitle = () => (
 
 const ListInfo = () => {
   const [hover, setHover] = useState<number | null>(null);
-  const lists = [1, 2, 3, 4];
+  const lists = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   console.log('------------', hover);
 
   return (
     <div className={styles['list-info']}>
-      <Row style={{ width: '100%' }} justify='space-between'>
+      <Row gutter={24} style={{ width: '100%' }} justify='space-between'>
         {lists.map((item, index) => (
           <Col
-            span={4}
-            style={{ position: 'relative', height: '400px' }}
+            style={{ marginBottom: '40px' }}
+            span={6}
             onMouseEnter={() => setHover(index)}
             onMouseLeave={() => setHover(null)}
           >
-            <Card style={{ width: '100%', height: '100%' }} hoverable>
-              <p>Card content</p>
-              <p>Card content</p>
-              <p>Card content</p>
+            <Card
+              className={styles['list-antd-card']}
+              hoverable
+              cover={<img src={testImg} alt='' />}
+            >
+              {/* 底部信息 */}
+              <Meta
+                style={{ width: '100%' }}
+                title={<div className={styles['bottom-title']}>每日分享</div>}
+                description={
+                  <div className={styles['bottom-content']}>
+                    <span>作者：Miss</span>
+                    <span datatype='person'>
+                      <UserOutlined /> 3000
+                    </span>
+                  </div>
+                }
+              />
+
+              {/* 鼠标focus信息 */}
+              {hover !== null && index === hover ? (
+                <div className={styles.mantle}>
+                  <Button type='primary' shape='round'>
+                    使用该模版创建
+                  </Button>
+                </div>
+              ) : null}
             </Card>
-            {hover !== null && index === hover ? (
-              <div className={styles.mantle}>
-                <Button type='primary' shape='round'>
-                  使用该模版创建
-                </Button>
-              </div>
-            ) : null}
           </Col>
         ))}
       </Row>
