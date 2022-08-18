@@ -1,11 +1,17 @@
 import { Layout } from 'antd';
+import EditorContent from './components/content';
+import EditorHeader from './components/header';
 
 const { Header, Content } = Layout;
 
 const Editor = () => (
   <Layout style={{ height: '100%' }}>
-    <Header>Header</Header>
-    <Content>Content</Content>
+    <Header>
+      <EditorHeader />
+    </Header>
+    <Content>
+      <EditorContent />
+    </Content>
   </Layout>
 );
 
