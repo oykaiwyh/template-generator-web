@@ -1,7 +1,7 @@
 import { Col, Row, Button } from 'antd';
 import { useState } from 'react';
 import styles from './Header.module.less';
-// import LogoImg from '@/assets/logo.png';
+import LogoImg from '@/assets/logo.png';
 
 const LoginComp = () => {
   const [isLogin, setLogin] = useState(false);
@@ -39,8 +39,7 @@ const HeaderPage = () => {
     <div className={styles.container}>
       <Row>
         <Col span={12}>
-          {/* <img src={LogoImg} alt='' height='64px' /> */}
-          Logo
+          <img src={LogoImg} alt='' height='44' width='40' />
         </Col>
         <Col span={12}>
           <LoginComp />
