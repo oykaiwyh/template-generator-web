@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-wrap-multilines */
 import { Button, Card, Col, Row } from 'antd';
 import { useState } from 'react';
 import { UserOutlined } from '@ant-design/icons';

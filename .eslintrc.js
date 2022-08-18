@@ -50,7 +50,8 @@ module.exports = {
     'react/function-component-definition': [2, { namedComponents: 'arrow-function' }], // 定义统一的组件定义-箭头函数组件
     'no-console': [2, { allow: ['warn', 'error', 'log'] }], // 定义console输出的形式
     'max-len': ['error', 120, 2], // 单行最多120
-    'object-curly-newline': 'off'
+    'object-curly-newline': 'off',
+    'react/jsx-wrap-multilines': 'off'
 
   }
 };
