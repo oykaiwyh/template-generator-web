@@ -5,7 +5,7 @@ import EditorHeader from './components/header';
 const { Header, Content } = Layout;
 
 const Editor = () => (
-  <Layout style={{ height: '100%' }}>
+  <Layout>
     <Header>
       <EditorHeader />
     </Header>

@@ -18,3 +18,40 @@
 .left-container {
   padding: 0 20px;
 }
+
+// layout center
+.center-container {
+  padding: 0 20px;
+}
+
+.center-control-container {
+  position: relative;
+  padding: 20px;
+
+  span[datatype="canvas-area"] {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .control-icon {
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 150px;
+  }
+}
+
+.center-canvas-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 20px;
+  padding: 20px;
+
+  .canvas-content {
+    width: 375px;
+    height: 560px;
+  }
+}
