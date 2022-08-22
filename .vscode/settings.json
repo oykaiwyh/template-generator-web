@@ -64,4 +64,7 @@
     // "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  // 配置css模块导入【不生效需要配置一下】
+  // "typescript.tsdk": "node_modules/typescript/lib",
+  // "typescript.enablePromptUseWorkspaceTsdk": true
 }
