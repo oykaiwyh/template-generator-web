@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch, RootState } from '@/redux';
 import styles from './content.module.less';
+import { EText } from '@/components/EText';
 
 // 获取state值
 const mapStateToProps = (state: RootState) => ({
@@ -21,6 +22,27 @@ type reduxEventType = ReturnType<typeof mapDispatchToProps>;
 type reduxStateType = ReturnType<typeof mapStateToProps>;
 export type IContentCanvasProps = Required<reduxStateType & reduxEventType>;
 
+const CustomComponents = (tag: string, props?: any) => {
+  switch (tag) {
+    case 'e-text':
+      return <EText {...props} />;
+    default:
+      return <EText {...props} />;
+  }
+};
+
+const showComp = [
+  {
+    tag: 'e-text',
+    props: {
+      color: '#000000',
+      text: 'hello3',
+      fontSize: '30px',
+      fontFamily: '',
+    },
+  },
+];
+
 const ContentCanvas = ({ count, changeCount }: IContentCanvasProps) => {
   console.log('-- ContentCanvas --');
 
@@ -31,6 +53,9 @@ const ContentCanvas = ({ count, changeCount }: IContentCanvasProps) => {
         <button type='submit' onClick={() => changeCount(Math.random() * 10)}>
           点击
         </button>
+        {showComp.map((Comp) => (
+          <>{CustomComponents(Comp.tag, Comp.props)}</>
+        ))}
       </div>
     </div>
   );

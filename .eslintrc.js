@@ -54,6 +54,7 @@ module.exports = {
     'react/jsx-wrap-multilines': 'off',
     'default-param-last': 'off', // 关闭函数参数有默认值时，参数需要放最后一个
     'no-shadow': 'off', // ts 定义enum错误
-    '@typescript-eslint/no-explicit-any': 'off' // 关闭ts any类型警告
+    '@typescript-eslint/no-explicit-any': 'off', // 关闭ts any类型警告
+    'react/jsx-props-no-spreading': 'off' // 禁用 {...props} 扩展属性
   }
 };
