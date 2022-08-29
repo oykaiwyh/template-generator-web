@@ -4,9 +4,28 @@ import {
   FileImageOutlined,
 } from '@ant-design/icons';
 import { Tabs } from 'antd';
+import { connect } from 'react-redux';
+import { canvasLeftTextLists } from '../../const';
 import styles from './content.module.less';
 
 const { TabPane } = Tabs;
+
+const TextItem = connect(
+  null,
+  null
+)(() => (
+  <div style={{ textAlign: 'center' }}>
+    {canvasLeftTextLists.map((props, index) => {
+      const { text = '', tag: Tag = 'p', ...styleProps } = props;
+      return (
+        <Tag key={`${Tag + index}`} style={{ ...styleProps }}>
+          {text}
+        </Tag>
+      );
+    })}
+  </div>
+));
+
 const ContentLeft = () => {
   console.log('-- ContentLeft --');
 
@@ -24,7 +43,7 @@ const ContentLeft = () => {
           }
           key='text'
         >
-          文本
+          <TextItem />
         </TabPane>
         <TabPane
           tab={

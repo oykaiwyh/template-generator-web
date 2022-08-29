@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import React from 'react';
 import { Dispatch, RootState } from '@/redux';
 import styles from './content.module.less';
 import { EText } from '@/components/EText';
@@ -47,7 +48,9 @@ const ContentCanvas = ({
           点击
         </button>
         {canvansComponents?.map((Comp) => (
-          <>{CustomComponents(Comp.tag, Comp.props)}</>
+          <React.Fragment key={Comp.id}>
+            {CustomComponents(Comp.tag, Comp.props)}
+          </React.Fragment>
         ))}
       </div>
     </div>

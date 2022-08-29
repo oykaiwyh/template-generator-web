@@ -1,6 +1,9 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const testShowComps = [
   {
     tag: 'e-text',
+    id: uuidv4(),
     props: {
       color: '#000000',
       text: 'hello3',
