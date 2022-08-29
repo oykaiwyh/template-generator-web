@@ -5,6 +5,7 @@ import { EText } from '@/components/EText';
 
 // 获取state值
 const mapStateToProps = (state: RootState) => ({
+  canvansComponents: state.editorReducer.components,
   count: state.editorReducer.count,
 });
 
@@ -31,19 +32,11 @@ const CustomComponents = (tag: string, props?: any) => {
   }
 };
 
-const showComp = [
-  {
-    tag: 'e-text',
-    props: {
-      color: '#000000',
-      text: 'hello3',
-      fontSize: '30px',
-      fontFamily: '',
-    },
-  },
-];
-
-const ContentCanvas = ({ count, changeCount }: IContentCanvasProps) => {
+const ContentCanvas = ({
+  count,
+  canvansComponents,
+  changeCount,
+}: IContentCanvasProps) => {
   console.log('-- ContentCanvas --');
 
   return (
@@ -53,7 +46,7 @@ const ContentCanvas = ({ count, changeCount }: IContentCanvasProps) => {
         <button type='submit' onClick={() => changeCount(Math.random() * 10)}>
           点击
         </button>
-        {showComp.map((Comp) => (
+        {canvansComponents?.map((Comp) => (
           <>{CustomComponents(Comp.tag, Comp.props)}</>
         ))}
       </div>
