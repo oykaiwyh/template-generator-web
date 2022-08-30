@@ -5,6 +5,7 @@ import {
 } from '@ant-design/icons';
 import { Tabs } from 'antd';
 import { connect } from 'react-redux';
+import { EText } from '@/components/EText';
 import { canvasLeftTextLists } from '../../const';
 import styles from './content.module.less';
 
@@ -15,14 +16,9 @@ const TextItem = connect(
   null
 )(() => (
   <div style={{ textAlign: 'center' }}>
-    {canvasLeftTextLists.map((props, index) => {
-      const { text = '', tag: Tag = 'p', ...styleProps } = props;
-      return (
-        <Tag key={`${Tag + index}`} style={{ ...styleProps }}>
-          {text}
-        </Tag>
-      );
-    })}
+    {canvasLeftTextLists.map((props, index) => (
+      <EText key={`${props.tag + index}`} {...props} />
+    ))}
   </div>
 ));
 

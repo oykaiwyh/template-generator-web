@@ -1,7 +1,7 @@
-import { HTMLAttributes } from 'react';
 import { TTextType } from '@/pages/Editor/interface';
+import styles from './EText.module.less';
 
-type IETextProps = HTMLAttributes<HTMLDivElement> & {
+type IETextProps = React.CSSProperties & {
   tag: TTextType;
   text: string;
 };
@@ -9,7 +9,11 @@ type IETextProps = HTMLAttributes<HTMLDivElement> & {
 const EText = ({ text, tag: Tag = 'p', ...styleProps }: IETextProps) => {
   console.log('--EText--');
 
-  return <Tag style={{ ...styleProps }}>{text}</Tag>;
+  return (
+    <Tag className={styles.container} style={{ ...styleProps }}>
+      {text}
+    </Tag>
+  );
 };
 
 export default EText;

@@ -28,39 +28,61 @@ const HeaderLeft = () => {
   );
 };
 
-const HeaderRight = () => (
-  <Row>
-    <Col span={4} offset={2}>
-      <Button type='primary' shape='round'>
-        预览和设置
-      </Button>
-    </Col>
-    <Col span={4} offset={2}>
-      <Button type='primary' shape='round'>
-        保存
-      </Button>
-    </Col>
-    <Col span={4}>
-      <Button type='primary' shape='round'>
-        发布
-      </Button>
-    </Col>
-    <Col span={6}>
-      <Dropdown.Button
-        style={{ borderRadius: '20px' }}
-        overlay={
-          <Menu mode='horizontal' className={styles['menu-setting']}>
-            <Menu.Item key='1'>我的作品</Menu.Item>
-            <Menu.Item key='2'>个人设置</Menu.Item>
-            <Menu.Item key='3'>退出</Menu.Item>
-          </Menu>
-        }
-      >
-        登录账号
-      </Dropdown.Button>
-    </Col>
-  </Row>
-);
+const HeaderRight = () => {
+  const menus = [
+    {
+      label: (
+        <a target='_blank' rel='noopener noreferrer' href='/'>
+          我的作品
+        </a>
+      ),
+      key: '0',
+    },
+    {
+      label: (
+        <a target='_blank' rel='noopener noreferrer' href='/'>
+          个人设置
+        </a>
+      ),
+      key: '1',
+    },
+    {
+      label: (
+        <a target='_blank' rel='noopener noreferrer' href='/'>
+          退出
+        </a>
+      ),
+      key: '2',
+    },
+  ];
+  return (
+    <Row>
+      <Col span={4} offset={2}>
+        <Button type='primary' shape='round'>
+          预览和设置
+        </Button>
+      </Col>
+      <Col span={4} offset={2}>
+        <Button type='primary' shape='round'>
+          保存
+        </Button>
+      </Col>
+      <Col span={4}>
+        <Button type='primary' shape='round'>
+          发布
+        </Button>
+      </Col>
+      <Col span={6}>
+        <Dropdown.Button
+          style={{ borderRadius: '20px' }}
+          overlay={<Menu className={styles['menu-setting']} items={menus} />}
+        >
+          登录账号
+        </Dropdown.Button>
+      </Col>
+    </Row>
+  );
+};
 
 const EditorHeader = () => {
   console.log('---------EditorHeader----------');

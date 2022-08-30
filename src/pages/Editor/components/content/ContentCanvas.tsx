@@ -24,8 +24,8 @@ type reduxEventType = ReturnType<typeof mapDispatchToProps>;
 type reduxStateType = ReturnType<typeof mapStateToProps>;
 export type IContentCanvasProps = Required<reduxStateType & reduxEventType>;
 
-const CustomComponents = (tag: string, props?: any) => {
-  switch (tag) {
+const CustomComponents = (compName: string, props?: any) => {
+  switch (compName) {
     case 'e-text':
       return <EText {...props} />;
     default:
@@ -49,7 +49,7 @@ const ContentCanvas = ({
         </button>
         {canvansComponents?.map((Comp) => (
           <React.Fragment key={Comp.id}>
-            {CustomComponents(Comp.tag, Comp.props)}
+            {CustomComponents(Comp.name, Comp.props)}
           </React.Fragment>
         ))}
       </div>
