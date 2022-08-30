@@ -1,5 +1,7 @@
-type positionType = Pick<React.CSSProperties, 'position'>;
-type textAlignType = Pick<React.CSSProperties, 'textAlign'>;
+import { CSSProperties } from 'react';
+
+type positionType = Pick<CSSProperties, 'position'>;
+type textAlignType = Pick<CSSProperties, 'textAlign'>;
 
 interface IComponentsCommonProps {
   actionType: string; // actions
@@ -39,6 +41,20 @@ interface IETextDefaultProps extends IComponentsCommonProps {
 // editor现支持dom元素类型
 type TTextType = 'h2' | 'p' | 'button';
 
-export type { IComponentsCommonProps, IETextDefaultProps, TTextType };
+interface ITextCompProps {
+  id: string;
+  name: string;
+  props: React.CSSProperties & {
+    tag: TTextType;
+    text: string;
+  };
+}
+
+export type {
+  IComponentsCommonProps,
+  IETextDefaultProps,
+  TTextType,
+  ITextCompProps,
+};
 
 export default {};

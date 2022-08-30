@@ -24,7 +24,9 @@ type reduxEventType = ReturnType<typeof mapDispatchToProps>;
 type reduxStateType = ReturnType<typeof mapStateToProps>;
 export type IContentCanvasProps = Required<reduxStateType & reduxEventType>;
 
-const CustomComponents = (compName: string, props?: any) => {
+const CustomComponents = (compName = 'e-text', props?: any) => {
+  console.log('---------', props);
+
   switch (compName) {
     case 'e-text':
       return <EText {...props} />;

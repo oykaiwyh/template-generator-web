@@ -6,18 +6,40 @@ import {
 import { Tabs } from 'antd';
 import { connect } from 'react-redux';
 import { EText } from '@/components/EText';
-import { canvasLeftTextLists } from '../../const';
+import { canvasDefaultTextLists } from '../../const';
 import styles from './content.module.less';
+import { Dispatch } from '@/redux';
+import { ITextCompProps } from '../../interface';
 
 const { TabPane } = Tabs;
 
+// 改变state的值的方法
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  addComponents: (data: ITextCompProps) => {
+    dispatch({
+      type: 'ADD_COMPONENT',
+      payload: data,
+    });
+  },
+});
+type reduxEventType = ReturnType<typeof mapDispatchToProps>;
 const TextItem = connect(
   null,
-  null
-)(() => (
-  <div style={{ textAlign: 'center' }}>
-    {canvasLeftTextLists.map((props, index) => (
-      <EText key={`${props.tag + index}`} {...props} />
+  mapDispatchToProps
+)(({ addComponents }: reduxEventType) => (
+  <div>
+    {canvasDefaultTextLists.map((compAttribute) => (
+      <div
+        onClick={() => addComponents(compAttribute)}
+        role='none'
+        style={{ display: 'flex', justifyContent: 'center' }}
+      >
+        <EText
+          key={`${compAttribute.id}`}
+          {...compAttribute.props}
+          position='static'
+        />
+      </div>
     ))}
   </div>
 ));

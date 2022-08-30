@@ -1,6 +1,49 @@
+import { CSSProperties } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { TTextType } from './interface';
 
-const canvasLeftTextLists: (React.CSSProperties & {
+const commonDefaultProps = {
+  // actions
+  actionType: '',
+  url: '',
+  // size
+  height: '',
+  width: '',
+  paddingLeft: '0px',
+  paddingRight: '0px',
+  paddingTop: '0px',
+  paddingBottom: '0px',
+  // border type
+  borderStyle: 'none',
+  borderColor: '#000',
+  borderWidth: '0',
+  borderRadius: '0',
+  // shadow and opacity
+  boxShadow: '0 0 0 #000000',
+  opacity: 1,
+  // position and x,y
+  position: 'absolute',
+  left: '0',
+  top: '0',
+  right: '0',
+};
+
+const textDefaultProps = {
+  // basic props - font styles
+  fontSize: '14px',
+  fontFamily: '',
+  fontWeight: 'normal',
+  fontStyle: 'normal',
+  textDecoration: 'none',
+  lineHeight: '1',
+  textAlign: 'center',
+  color: '#000000',
+  backgroundColor: '',
+  ...commonDefaultProps,
+  width: '318px',
+};
+
+const canvasLeftTextLists: (CSSProperties & {
   tag: TTextType;
   text: string;
 })[] = [
@@ -70,48 +113,28 @@ const canvasLeftTextLists: (React.CSSProperties & {
   },
 ];
 
-export const commonDefaultProps = {
-  // actions
-  actionType: '',
-  url: '',
-  // size
-  height: '',
-  width: '',
-  paddingLeft: '0px',
-  paddingRight: '0px',
-  paddingTop: '0px',
-  paddingBottom: '0px',
-  // border type
-  borderStyle: 'none',
-  borderColor: '#000',
-  borderWidth: '0',
-  borderRadius: '0',
-  // shadow and opacity
-  boxShadow: '0 0 0 #000000',
-  opacity: 1,
-  // position and x,y
-  position: 'absolute',
-  left: '0',
-  top: '0',
-  right: '0',
-};
+const canvasDefaultTextLists = canvasLeftTextLists.map((prop) => ({
+  name: 'l-text',
+  id: uuidv4(),
+  props: {
+    ...(textDefaultProps as CSSProperties),
+    ...prop,
+    ...{
+      fontSize: '14px',
+      width: '125px',
+      height: '36px',
+      left: `${320 / 2 - 125 / 2}px`,
+      top: `${500 / 2 - 36 / 2}px`,
+    },
+  },
+}));
 
-export const textDefaultProps = {
-  // basic props - font styles
-  fontSize: '14px',
-  fontFamily: '',
-  fontWeight: 'normal',
-  fontStyle: 'normal',
-  textDecoration: 'none',
-  lineHeight: '1',
-  textAlign: 'center',
-  color: '#000000',
-  backgroundColor: '',
-  ...commonDefaultProps,
-  width: '318px',
+export {
+  commonDefaultProps,
+  textDefaultProps,
+  canvasLeftTextLists,
+  canvasDefaultTextLists,
 };
-
-export { canvasLeftTextLists };
 
 export default {
   canvasLeftTextLists,
