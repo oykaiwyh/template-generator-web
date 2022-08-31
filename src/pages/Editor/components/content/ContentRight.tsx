@@ -1,4 +1,5 @@
 import { Tabs } from 'antd';
+import AttributeSetting from '../contentLeft/AttributeSetting';
 import styles from './content.module.less';
 
 const { TabPane } = Tabs;
@@ -10,7 +11,7 @@ const ContentRight = () => {
     <div className={`${styles['content-bg']} ${styles['content-size']} `}>
       <Tabs defaultActiveKey='1' type='card'>
         <TabPane tab='属性设置' key='attribute'>
-          属性设置
+          <AttributeSetting />
         </TabPane>
         <TabPane tab='图层设置' key='pageLevel'>
           图层设置

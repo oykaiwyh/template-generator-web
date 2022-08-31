@@ -30,15 +30,12 @@ const TextItem = connect(
   <div>
     {canvasDefaultTextLists.map((compAttribute) => (
       <div
+        key={`${compAttribute.id}`}
         onClick={() => addComponents(compAttribute)}
         role='none'
         style={{ display: 'flex', justifyContent: 'center' }}
       >
-        <EText
-          key={`${compAttribute.id}`}
-          {...compAttribute.props}
-          position='static'
-        />
+        <EText {...compAttribute.props} position='static' />
       </div>
     ))}
   </div>
