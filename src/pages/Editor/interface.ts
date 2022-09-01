@@ -50,11 +50,30 @@ interface ITextCompProps {
   };
 }
 
+// left - 属性设置
+type TBaseTreesTypes =
+  | 'TextArea'
+  | 'Input'
+  | 'Select'
+  | 'SelectAndRadio'
+  | 'Slider'
+  | 'Radio'
+  | 'ColorPick';
+interface IBaseTrees {
+  id: number | string;
+  title: string;
+  type: TBaseTreesTypes;
+  attribute: string;
+}
+
 export type {
   IComponentsCommonProps,
   IETextDefaultProps,
   TTextType,
   ITextCompProps,
+  // left - 属性设置
+  TBaseTreesTypes,
+  IBaseTrees,
 };
 
 export default {};

@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { TTextType } from './interface';
+import { IBaseTrees, TTextType } from './interface';
 
 const commonDefaultProps = {
   // actions
@@ -129,11 +129,58 @@ const canvasDefaultTextLists = canvasLeftTextLists.map((prop) => ({
   },
 }));
 
+// left - 属性设置
+const baseAttributeTrees: IBaseTrees[] = [
+  {
+    id: 1,
+    title: '文本:',
+    type: 'TextArea',
+    attribute: 'text',
+  },
+  {
+    id: 2,
+    title: '字号:',
+    type: 'Input',
+    attribute: 'fontSize',
+  },
+  {
+    id: 3,
+    title: '字体:',
+    type: 'SelectAndRadio',
+    attribute: 'fontFamily',
+  },
+  {
+    id: 4,
+    title: '行高:',
+    type: 'Slider',
+    attribute: 'fontSize',
+  },
+  {
+    id: 5,
+    title: '对齐:',
+    type: 'Radio',
+    attribute: 'textAlign',
+  },
+  {
+    id: 6,
+    title: '文字颜色:',
+    type: 'ColorPick',
+    attribute: 'color',
+  },
+  {
+    id: 7,
+    title: '背景颜色:',
+    type: 'ColorPick',
+    attribute: 'backgroundColor',
+  },
+];
+
 export {
   commonDefaultProps,
   textDefaultProps,
   canvasLeftTextLists,
   canvasDefaultTextLists,
+  baseAttributeTrees,
 };
 
 export default {

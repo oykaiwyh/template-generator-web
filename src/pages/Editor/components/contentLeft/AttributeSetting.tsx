@@ -1,68 +1,17 @@
-import { Col, Collapse, Input, Row } from 'antd';
-import React, { Fragment, ReactNode } from 'react';
+import { Collapse } from 'antd';
+import { Fragment } from 'react';
+import { baseAttributeTrees } from '../../const';
+import { renderComp } from './common';
 
 const { Panel } = Collapse;
-const { TextArea } = Input;
 const text = 'hello world';
 
-type TBaseTreesTypes = 'TextArea' | 'Input' | 'Select';
-interface IBaseTrees {
-  id: number | string;
-  title: string;
-  type: TBaseTreesTypes;
-  attribute: string;
-}
-
-const Wrapper = ({ children }: { children: ReactNode }) => (
-  // <div style={{ display: 'flex', alignItems: 'center' }}>
-  <Row align='middle' style={{ marginBottom: '10px' }}>
-    {(children as []).map((child, index) => (
-      <Col span={index === 0 ? 6 : 18}>{child}</Col>
-    ))}
-  </Row>
-  // </div>
-);
-
-const renderComp = (item: IBaseTrees) => {
-  switch (item.type) {
-    case 'TextArea':
-      return (
-        <Wrapper>
-          <span>{item.title}</span>
-          <TextArea rows={4} />
-        </Wrapper>
-      );
-    case 'Input':
-      return (
-        <Wrapper>
-          <span>{item.title}</span>
-          <Input />
-        </Wrapper>
-      );
-
-    default:
-      return <TextArea rows={4} />;
-  }
-};
-
 const BaseAttribute = () => {
-  const attributeTrees: IBaseTrees[] = [
-    {
-      id: 1,
-      title: '文本',
-      type: 'TextArea',
-      attribute: 'text',
-    },
-    {
-      id: 2,
-      title: '字号',
-      type: 'Input',
-      attribute: 'fontSize',
-    },
-  ];
+  console.log('--BaseAttribute--');
+
   return (
     <div>
-      {attributeTrees.map((item) => (
+      {baseAttributeTrees.map((item) => (
         <Fragment key={item.id}>{renderComp(item)}</Fragment>
       ))}
     </div>
