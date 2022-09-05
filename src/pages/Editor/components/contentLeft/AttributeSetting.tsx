@@ -1,5 +1,5 @@
 import { Collapse, Empty } from 'antd';
-import { Fragment, ReactNode } from 'react';
+import { Fragment } from 'react';
 import { renderComp } from './common';
 import { useGetCurrentComponentAttr, useGetEditorState } from '../../hook';
 import { checkIsNull } from '@/utils';

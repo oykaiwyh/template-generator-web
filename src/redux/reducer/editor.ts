@@ -23,6 +23,12 @@ function editorReducer(
         ...state,
         currentComponent: action.payload,
       };
+    // 修改画布单个元素属性
+    case ACTION_TYPE.EDIT_CURRENT_COMPONENT:
+      return {
+        ...state,
+        components: [...action.payload],
+      };
 
     default:
       return state;
