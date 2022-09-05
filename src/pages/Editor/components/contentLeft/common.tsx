@@ -1,5 +1,6 @@
-import { Col, Input, Radio, Row, Select, Slider } from 'antd';
+import { Col, Input, InputNumber, Radio, Row, Select, Slider } from 'antd';
 import { ReactNode } from 'react';
+import { getNumber } from '@/utils';
 import { IBaseTrees } from '../../interface';
 
 const { TextArea } = Input;
@@ -8,7 +9,9 @@ const Wrapper = ({ children }: { children: ReactNode }) => (
   // <div style={{ display: 'flex', alignItems: 'center' }}>
   <Row align='middle' style={{ marginBottom: '10px' }}>
     {(children as []).map((child, index) => (
-      <Col span={index === 0 ? 6 : 18}>{child}</Col>
+      <Col key={`${child + index}`} span={index === 0 ? 6 : 18}>
+        {child}
+      </Col>
     ))}
   </Row>
   // </div>
@@ -20,21 +23,24 @@ const renderComp = (item: IBaseTrees) => {
       return (
         <Wrapper>
           <span>{item.title}</span>
-          <TextArea rows={4} />
+          <TextArea rows={4} value={item?.value as string} />
         </Wrapper>
       );
     case 'Input':
       return (
         <Wrapper>
           <span>{item.title}</span>
-          <Input />
+          <InputNumber
+            min={1}
+            defaultValue={getNumber(item?.value as string)}
+          />
         </Wrapper>
       );
     case 'Slider':
       return (
         <Wrapper>
           <span>{item.title}</span>
-          <Slider defaultValue={30} />
+          <Slider defaultValue={30} value={Number(item?.value)} />
         </Wrapper>
       );
     case 'Radio':
@@ -71,7 +77,7 @@ const renderComp = (item: IBaseTrees) => {
             >
               <Radio.Button value='a'>B</Radio.Button>
               <Radio.Button value='b'>I</Radio.Button>
-              <Radio.Button value='b'>U</Radio.Button>
+              <Radio.Button value='c'>U</Radio.Button>
             </Radio.Group>
           </div>
         </Wrapper>

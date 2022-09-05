@@ -17,6 +17,12 @@ function editorReducer(
         ...state,
         components: [...state.components, action.payload],
       };
+    // 点击画布单个元素的下标
+    case ACTION_TYPE.CURRENT_COMPONENT:
+      return {
+        ...state,
+        currentComponent: action.payload,
+      };
 
     default:
       return state;

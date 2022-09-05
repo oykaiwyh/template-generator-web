@@ -7,7 +7,7 @@ module.exports = {
   },
   // 使用的扩展库
   extends: ['plugin:react/recommended', 'airbnb', 'eslint:recommended', 'plugin:@typescript-eslint/recommended'],
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', 'react-hooks', '@typescript-eslint'],
   parserOptions: {
     parser: '@typescript-eslint/parser', // 解析器用于解析代码
     ecmaVersion: 2018,
@@ -55,6 +55,8 @@ module.exports = {
     'default-param-last': 'off', // 关闭函数参数有默认值时，参数需要放最后一个
     'no-shadow': 'off', // ts 定义enum错误
     '@typescript-eslint/no-explicit-any': 'off', // 关闭ts any类型警告
-    'react/jsx-props-no-spreading': 'off' // 禁用 {...props} 扩展属性
+    'react/jsx-props-no-spreading': 'off', // 禁用 {...props} 扩展属性
+    'react-hooks/exhaustive-deps': 'warn', // 配置 hook 依赖数组相关
+
   }
 };

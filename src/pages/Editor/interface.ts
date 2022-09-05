@@ -44,10 +44,12 @@ type TTextType = 'h2' | 'p' | 'button';
 interface ITextCompProps {
   id: string;
   name: string;
-  props: React.CSSProperties & {
-    tag: TTextType;
-    text: string;
-  };
+  props: Partial<
+    React.CSSProperties & {
+      tag: TTextType;
+      text: string;
+    }
+  >;
 }
 
 // left - 属性设置
@@ -63,7 +65,8 @@ interface IBaseTrees {
   id: number | string;
   title: string;
   type: TBaseTreesTypes;
-  attribute: string;
+  attribute: keyof (CSSProperties & { text: string });
+  value?: unknown;
 }
 
 export type {

@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
+import { ITextCompProps } from '@/pages/Editor/interface';
 
-const testShowComps = [
+const testShowComps: ITextCompProps[] = [
   {
     name: 'e-text',
     id: uuidv4(),
@@ -15,6 +16,7 @@ const testShowComps = [
 
 const initialEditorState = {
   count: 12,
+  currentComponent: null,
   components: testShowComps,
 };
 

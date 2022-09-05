@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import React from 'react';
 import { Dispatch, RootState } from '@/redux';
 import styles from './content.module.less';
@@ -26,10 +26,18 @@ export type IContentCanvasProps = Required<reduxStateType & reduxEventType>;
 
 const CustomComponents = (compName = 'e-text', props?: any) => {
   console.log('---------', props);
+  const Dispath: Dispatch = useDispatch();
 
   switch (compName) {
     case 'e-text':
-      return <EText {...props} />;
+      return (
+        <EText
+          {...props}
+          onClick={() => {
+            Dispath({ type: 'CURRENT_COMPONENT', payload: 0 });
+          }}
+        />
+      );
     default:
       return <EText {...props} />;
   }
