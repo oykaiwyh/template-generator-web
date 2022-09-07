@@ -1,29 +1,38 @@
 import { Collapse, Empty } from 'antd';
-import { Fragment } from 'react';
-import { renderComp } from './common';
+import { memo } from 'react';
+import { RenderAdapterComp } from './common';
 import { useGetCurrentComponentAttr, useGetEditorState } from '../../hook';
 import { checkIsNull } from '@/utils';
 
 const { Panel } = Collapse;
 const text = 'hello world';
 
-const BaseAttribute = () => {
+const BaseAttribute = memo(() => {
   console.log('--BaseAttribute--');
-  const baseAttributeTrees = useGetCurrentComponentAttr();
+  const { showBaseAttributeTrees, handleEditComponentsAttr } =
+    useGetCurrentComponentAttr();
 
   return (
     <div>
-      {baseAttributeTrees.map((item) => (
-        <Fragment key={item.id}>{renderComp(item)}</Fragment>
+      {showBaseAttributeTrees.map((item) => (
+        <RenderAdapterComp
+          key={item.id}
+          {...item}
+          onChange={handleEditComponentsAttr}
+        />
       ))}
     </div>
   );
-};
+});
 
 const AttributeSetting = () => {
   console.log('-- AttributeSetting --');
 
   const { currentComponent } = useGetEditorState();
+  // TODO: 只要改变右侧属性的值 AttributeSetting组件就会重新渲染（换成下面方式只取单个只也会如此）--- 奇怪的问题
+  // const { currentComponent } = useSelector((state: RootState) => ({
+  //   currentComponent: state.editorReducer.currentComponent,
+  // }));
 
   return (
     <div>

@@ -41,15 +41,16 @@ interface IETextDefaultProps extends IComponentsCommonProps {
 // editor现支持dom元素类型
 type TTextType = 'h2' | 'p' | 'button';
 
+type TCssProperties = Partial<
+  React.CSSProperties & {
+    tag: TTextType;
+    text: string;
+  }
+>;
 interface ITextCompProps {
   id: string;
   name: string;
-  props: Partial<
-    React.CSSProperties & {
-      tag: TTextType;
-      text: string;
-    }
-  >;
+  props: TCssProperties;
 }
 
 // left - 属性设置
@@ -70,6 +71,8 @@ interface IBaseTrees {
 }
 
 export type {
+  // global
+  TCssProperties,
   IComponentsCommonProps,
   IETextDefaultProps,
   TTextType,
