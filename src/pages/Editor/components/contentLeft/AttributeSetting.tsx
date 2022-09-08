@@ -1,5 +1,4 @@
 import { Collapse, Empty } from 'antd';
-import { memo } from 'react';
 import { RenderAdapterComp } from './common';
 import { useGetCurrentComponentAttr, useGetEditorState } from '../../hook';
 import { checkIsNull } from '@/utils';
@@ -7,7 +6,7 @@ import { checkIsNull } from '@/utils';
 const { Panel } = Collapse;
 const text = 'hello world';
 
-const BaseAttribute = memo(() => {
+const BaseAttribute = () => {
   console.log('--BaseAttribute--');
   const { showBaseAttributeTrees, handleEditComponentsAttr } =
     useGetCurrentComponentAttr();
@@ -23,7 +22,7 @@ const BaseAttribute = memo(() => {
       ))}
     </div>
   );
-});
+};
 
 const AttributeSetting = () => {
   console.log('-- AttributeSetting --');
