@@ -4,7 +4,8 @@ import styles from './content.module.less';
 
 // 获取state值
 const mapStateToProps = (state: RootState) => ({
-  count: state.editorReducer.count,
+  count: (state.editorReducer.get('count') || 0) as number,
+  test: state.editorReducer.getIn(['test', 'props', 'text']),
 });
 
 // 改变state的值的方法
@@ -21,7 +22,7 @@ type reduxEventType = ReturnType<typeof mapDispatchToProps>;
 type reduxStateType = ReturnType<typeof mapStateToProps>;
 export type IContentCanvasProps = Required<reduxStateType & reduxEventType>;
 
-const ContentCanvas = ({ count, changeCount }: IContentCanvasProps) => {
+const ContentCanvas = ({ count, test, changeCount }: IContentCanvasProps) => {
   console.log('-- ContentCanvas --');
 
   return (
@@ -31,6 +32,7 @@ const ContentCanvas = ({ count, changeCount }: IContentCanvasProps) => {
         <button type='submit' onClick={() => changeCount(Math.random() * 10)}>
           点击
         </button>
+        {test}
       </div>
     </div>
   );
