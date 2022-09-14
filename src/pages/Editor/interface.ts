@@ -68,6 +68,7 @@ interface IBaseTrees {
   type: TBaseTreesTypes;
   attribute: keyof (CSSProperties & { text: string });
   value?: unknown;
+  attributeValue?: unknown;
 }
 
 export type {

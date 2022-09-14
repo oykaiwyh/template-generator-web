@@ -1,7 +1,9 @@
 import { Col, Input, InputNumber, Radio, Row, Select, Slider } from 'antd';
 import { ReactNode, memo } from 'react';
+
 import { getNumber } from '@/utils';
 import { IBaseTrees } from '../../interface';
+import { defaultFontMode } from '../../const';
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -22,6 +24,7 @@ const AdapterComp = ({
   title,
   value,
   attribute,
+  attributeValue,
   onChange,
 }: IBaseTrees & { onChange?: (item: any) => void }) => {
   switch (type) {
@@ -72,23 +75,30 @@ const AdapterComp = ({
           <input type='color' />
         </Wrapper>
       );
-    case 'SelectAndRadio':
+    case 'SelectAndRadio': // 字体定制类型
       return (
         <Wrapper>
           <span>{title}</span>
           <div>
             <Select style={{ width: '100%' }}>
-              <Option value='jack'>Jack</Option>
-              <Option value='lucy'>Lucy</Option>
+              {(attributeValue as [])?.map((option: any) => (
+                <Option key={option?.id} value={option.value}>
+                  <span style={{ fontFamily: `${option.value}` }}>
+                    {option.text}
+                  </span>
+                </Option>
+              ))}
             </Select>
             <Radio.Group
               defaultValue='a'
               buttonStyle='solid'
               style={{ marginTop: '5px' }}
             >
-              <Radio.Button value='a'>B</Radio.Button>
-              <Radio.Button value='b'>I</Radio.Button>
-              <Radio.Button value='c'>U</Radio.Button>
+              {defaultFontMode.map((Comp) => (
+                <Radio.Button key={Comp.id} value={Comp.value}>
+                  <Comp.IconName />
+                </Radio.Button>
+              ))}
             </Radio.Group>
           </div>
         </Wrapper>

@@ -12,6 +12,16 @@ const testShowComps: ITextCompProps[] = [
       fontFamily: '',
     },
   },
+  {
+    name: 'e-text',
+    id: uuidv4(),
+    props: {
+      color: '#000000',
+      text: 'hello4',
+      fontSize: '30px',
+      fontFamily: '',
+    },
+  },
 ];
 
 const initialEditorState = {

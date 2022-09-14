@@ -1,5 +1,10 @@
 import { CSSProperties } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import {
+  BoldOutlined,
+  ItalicOutlined,
+  UnderlineOutlined,
+} from '@ant-design/icons';
 import { IBaseTrees, TTextType } from './interface';
 
 const commonDefaultProps = {
@@ -129,7 +134,45 @@ const canvasDefaultTextLists = canvasLeftTextLists.map((prop) => ({
   },
 }));
 
-// left - 属性设置
+// right - 字体样式 倾斜/加粗/加线
+const defaultFontMode = [
+  {
+    id: 1,
+    attribute: 'fontWeight',
+    IconName: BoldOutlined,
+    tip: '加粗',
+    value: 'bold',
+  },
+  {
+    id: 2,
+    attribute: 'fontStyle',
+    IconName: ItalicOutlined,
+    value: 'italic',
+    tip: '斜体',
+  },
+  {
+    id: 3,
+    attribute: 'textDecoration',
+    IconName: UnderlineOutlined,
+    value: 'underline',
+    tip: '下划线',
+  },
+];
+
+// right - 默认字体定义
+const defaultFontFamily = [
+  { id: 1, text: '宋体', value: '"SimSun","STSong"' },
+  { id: 2, text: '黑体', value: '"SimHei","STHeiti"' },
+  { id: 3, text: '楷体', value: '"KaiTi","STKaiti"' },
+  { id: 4, text: '仿宋', value: '"FangSong","STFangsong"' },
+  { id: 5, text: 'Arial', value: '"Arial", sans-serif' },
+  { id: 6, text: 'Arial Black', value: '"Arial Black", sans-serif' },
+  { id: 7, text: 'Comic Sans MS', value: '"Comic Sans MS"' },
+  { id: 8, text: 'Courier New', value: '"Courier New", monospace' },
+  { id: 9, text: 'Georgia', value: '"Georgia", serif' },
+  { id: 10, text: 'Times New Roman', value: '"Times New Roman", serif' },
+];
+// right - 属性设置
 const baseAttributeTrees: IBaseTrees[] = [
   {
     id: 1,
@@ -148,12 +191,13 @@ const baseAttributeTrees: IBaseTrees[] = [
     title: '字体:',
     type: 'SelectAndRadio',
     attribute: 'fontFamily',
+    attributeValue: defaultFontFamily,
   },
   {
     id: 4,
     title: '行高:',
     type: 'Slider',
-    attribute: 'fontSize',
+    attribute: 'lineHeight',
   },
   {
     id: 5,
@@ -180,7 +224,10 @@ export {
   textDefaultProps,
   canvasLeftTextLists,
   canvasDefaultTextLists,
+  // right
   baseAttributeTrees,
+  defaultFontFamily,
+  defaultFontMode,
 };
 
 export default {
