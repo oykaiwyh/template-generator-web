@@ -83,6 +83,8 @@ const AdapterComp = ({
             <Select
               defaultValue={value}
               style={{ width: '100%' }}
+              // 修复静态问题 `label` of `value` is not same as `label` in Select options.（）
+              optionLabelProp='children' // https://github.com/ant-design/ant-design/issues/34048
               onChange={(value) => onChange?.({ attribute, value })}
             >
               {(attributeValue as [])?.map((option: any) => (
