@@ -80,7 +80,11 @@ const AdapterComp = ({
         <Wrapper>
           <span>{title}</span>
           <div>
-            <Select style={{ width: '100%' }}>
+            <Select
+              defaultValue={value}
+              style={{ width: '100%' }}
+              onChange={(value) => onChange?.({ attribute, value })}
+            >
               {(attributeValue as [])?.map((option: any) => (
                 <Option key={option?.id} value={option.value}>
                   <span style={{ fontFamily: `${option.value}` }}>
@@ -95,7 +99,16 @@ const AdapterComp = ({
               style={{ marginTop: '5px' }}
             >
               {defaultFontMode.map((Comp) => (
-                <Radio.Button key={Comp.id} value={Comp.value}>
+                <Radio.Button
+                  key={Comp.id}
+                  value={Comp.value}
+                  onChange={(e) =>
+                    onChange?.({
+                      attribute: Comp.attribute,
+                      value: e.target.value,
+                    })
+                  }
+                >
                   <Comp.IconName />
                 </Radio.Button>
               ))}

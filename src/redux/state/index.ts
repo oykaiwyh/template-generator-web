@@ -9,7 +9,7 @@ const testShowComps: ITextCompProps[] = [
       color: '#000000',
       text: 'hello3',
       fontSize: '30px',
-      fontFamily: '',
+      fontFamily: '"SimSun","STSong"',
     },
   },
   {

@@ -24,7 +24,11 @@ type reduxEventType = ReturnType<typeof mapDispatchToProps>;
 type reduxStateType = ReturnType<typeof mapStateToProps>;
 export type IContentCanvasProps = Required<reduxStateType & reduxEventType>;
 
-const CustomComponents = (compName = 'e-text', props?: any) => {
+const CustomComponents = (
+  compName = 'e-text',
+  currentIndex: number,
+  props?: any
+) => {
   console.log('---------', props);
   const Dispath: Dispatch = useDispatch();
 
@@ -34,7 +38,7 @@ const CustomComponents = (compName = 'e-text', props?: any) => {
         <EText
           {...props}
           onClick={() => {
-            Dispath({ type: 'CURRENT_COMPONENT', payload: 0 });
+            Dispath({ type: 'CURRENT_COMPONENT', payload: currentIndex });
           }}
         />
       );
@@ -57,9 +61,9 @@ const ContentCanvas = ({
         <button type='submit' onClick={() => changeCount(Math.random() * 10)}>
           点击
         </button>
-        {canvansComponents?.map((Comp) => (
+        {canvansComponents?.map((Comp, index) => (
           <React.Fragment key={Comp.id}>
-            {CustomComponents(Comp.name, Comp.props)}
+            {CustomComponents(Comp.name, index, Comp.props)}
           </React.Fragment>
         ))}
       </div>

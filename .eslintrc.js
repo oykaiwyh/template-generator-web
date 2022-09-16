@@ -57,7 +57,9 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off', // 关闭ts any类型警告
     'react/jsx-props-no-spreading': 'off', // 禁用 {...props} 扩展属性
     'react-hooks/exhaustive-deps': 'warn', // 配置 hook 依赖数组相关
-    'operator-linebreak': 'off' // 当一条语句太长而不适合单行时，通常会在分隔表达式的运算符旁边插入换行符
+    'operator-linebreak': 'off', // 当一条语句太长而不适合单行时，通常会在分隔表达式的运算符旁边插入换行符
+    'react/jsx-curly-newline': 'off', // 1函数换行问题
+    'implicit-arrow-linebreak': 'off' // 2函数换行问题
 
   }
 };
