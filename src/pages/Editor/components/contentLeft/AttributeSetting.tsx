@@ -28,7 +28,7 @@ const AttributeSetting = () => {
   console.log('-- AttributeSetting --');
 
   const { currentComponent } = useGetEditorState();
-  // TODO: 只要改变右侧属性的值 AttributeSetting组件就会重新渲染（换成下面方式只取单个只也会如此）--- 奇怪的问题
+  // XXX: 只要改变右侧属性的值 AttributeSetting组件就会重新渲染（换成下面方式只取单个只也会如此）--- 奇怪的问题
   // const { currentComponent } = useSelector((state: RootState) => ({
   //   currentComponent: state.editorReducer.currentComponent,
   // }));
