@@ -1,7 +1,9 @@
 import { Collapse, Empty } from 'antd';
+import { useSelector } from 'react-redux';
 import { RenderAdapterComp } from './common';
-import { useGetCurrentComponentAttr, useGetEditorState } from '../../hook';
+import { useGetCurrentComponentAttr } from '../../hook';
 import { checkIsNull } from '@/utils';
+import { RootState } from '@/redux';
 
 const { Panel } = Collapse;
 const text = 'hello world';
@@ -27,8 +29,11 @@ const BaseAttribute = () => {
 const AttributeSetting = () => {
   console.log('-- AttributeSetting --');
 
-  const { currentComponent } = useGetEditorState();
+  const currentComponent = useSelector(
+    (state: RootState) => state.editorReducer.currentComponent
+  );
   // XXX: 只要改变右侧属性的值 AttributeSetting组件就会重新渲染（换成下面方式只取单个只也会如此）--- 奇怪的问题
+  // FIXME: 原因为 useGetEditorState 中 useSelector 导出的是一个对象，所以会导致，数据更新，导出的对象就会更新
   // const { currentComponent } = useSelector((state: RootState) => ({
   //   currentComponent: state.editorReducer.currentComponent,
   // }));
