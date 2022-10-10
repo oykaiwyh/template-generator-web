@@ -161,6 +161,7 @@ const defaultFontMode = [
 
 // right - 默认字体定义
 const defaultFontFamily = [
+  { id: 0, text: '无', value: '' },
   { id: 1, text: '宋体', value: '"SimSun","STSong"' },
   { id: 2, text: '黑体', value: '"SimHei","STHeiti"' },
   { id: 3, text: '楷体', value: '"KaiTi","STKaiti"' },
@@ -191,19 +192,29 @@ const baseAttributeTrees: IBaseTrees[] = [
     title: '字体:',
     type: 'SelectAndRadio',
     attribute: 'fontFamily',
-    attributeValue: defaultFontFamily,
+    attributeOptions: defaultFontFamily,
   },
   {
     id: 4,
     title: '行高:',
     type: 'Slider',
     attribute: 'lineHeight',
+    attributeRange: {
+      min: 0,
+      max: 3,
+      step: 0.1,
+    },
   },
   {
     id: 5,
     title: '对齐:',
     type: 'Radio',
     attribute: 'textAlign',
+    attributeOptions: [
+      { id: 1, value: 'left', text: '左' },
+      { id: 2, value: 'center', text: '中' },
+      { id: 3, value: 'right', text: '右' },
+    ],
   },
   {
     id: 6,
@@ -219,6 +230,9 @@ const baseAttributeTrees: IBaseTrees[] = [
   },
 ];
 
+// right - 属性值转换
+const transformValue = ['fontSize'];
+
 export {
   commonDefaultProps,
   textDefaultProps,
@@ -228,6 +242,7 @@ export {
   baseAttributeTrees,
   defaultFontFamily,
   defaultFontMode,
+  transformValue,
 };
 
 export default {

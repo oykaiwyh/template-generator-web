@@ -68,7 +68,12 @@ interface IBaseTrees {
   type: TBaseTreesTypes;
   attribute: keyof (CSSProperties & { text: string });
   value?: unknown;
-  attributeValue?: unknown;
+  attributeOptions?: unknown;
+  attributeRange?: {
+    min: number;
+    max: number;
+    step: number;
+  };
 }
 
 export type {

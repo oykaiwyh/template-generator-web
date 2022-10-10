@@ -4,6 +4,7 @@ import { ReactNode, memo } from 'react';
 import { getNumber } from '@/utils';
 import { IBaseTrees } from '../../interface';
 import { defaultFontMode } from '../../const';
+import { handleTransformValue } from '../../utils';
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -24,7 +25,8 @@ const AdapterComp = ({
   title,
   value,
   attribute,
-  attributeValue,
+  attributeOptions,
+  attributeRange,
   onChange,
 }: IBaseTrees & { onChange?: (item: any) => void }) => {
   switch (type) {
@@ -46,7 +48,12 @@ const AdapterComp = ({
           <InputNumber
             min={1}
             value={getNumber(value as string)}
-            onChange={(value) => onChange?.({ attribute, value })}
+            onChange={(value) =>
+              onChange?.({
+                attribute,
+                value: handleTransformValue(attribute, value),
+              })
+            }
           />
         </Wrapper>
       );
@@ -54,17 +61,30 @@ const AdapterComp = ({
       return (
         <Wrapper>
           <span>{title}</span>
-          <Slider defaultValue={30} value={Number(value)} />
+          <Slider
+            max={attributeRange?.max || 10}
+            min={attributeRange?.min || 0}
+            step={attributeRange?.step || 0.5}
+            defaultValue={Number(value)}
+            value={Number(value)}
+            onChange={(value) => onChange?.({ attribute, value })}
+          />
         </Wrapper>
       );
     case 'Radio':
       return (
         <Wrapper>
           <span>{title}</span>
-          <Radio.Group defaultValue='a' style={{ marginTop: 5 }}>
-            <Radio.Button value='a'>左</Radio.Button>
-            <Radio.Button value='b'>中</Radio.Button>
-            <Radio.Button value='c'>右</Radio.Button>
+          <Radio.Group
+            value={value || ''}
+            style={{ marginTop: 5 }}
+            onChange={(e) => onChange?.({ attribute, value: e.target.value })}
+          >
+            {(attributeOptions as []).map((item: any) => (
+              <Radio.Button key={item.id} value={item.value}>
+                {item.text}
+              </Radio.Button>
+            ))}
           </Radio.Group>
         </Wrapper>
       );
@@ -81,13 +101,13 @@ const AdapterComp = ({
           <span>{title}</span>
           <div>
             <Select
-              defaultValue={value}
+              value={value || ''}
               style={{ width: '100%' }}
               // 修复静态问题 `label` of `value` is not same as `label` in Select options.（）
               optionLabelProp='children' // https://github.com/ant-design/ant-design/issues/34048
               onChange={(value) => onChange?.({ attribute, value })}
             >
-              {(attributeValue as [])?.map((option: any) => (
+              {(attributeOptions as [])?.map((option: any) => (
                 <Option key={option?.id} value={option.value}>
                   <span style={{ fontFamily: `${option.value}` }}>
                     {option.text}
@@ -95,11 +115,7 @@ const AdapterComp = ({
                 </Option>
               ))}
             </Select>
-            <Radio.Group
-              defaultValue='a'
-              buttonStyle='solid'
-              style={{ marginTop: '5px' }}
-            >
+            <Radio.Group buttonStyle='solid' style={{ marginTop: '5px' }}>
               {defaultFontMode.map((Comp) => (
                 <Radio.Button
                   key={Comp.id}
