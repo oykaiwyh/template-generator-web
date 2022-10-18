@@ -1,9 +1,20 @@
-import { Col, Input, InputNumber, Radio, Row, Select, Slider } from 'antd';
+import {
+  Col,
+  Input,
+  InputNumber,
+  Radio,
+  Row,
+  Select,
+  Slider,
+  Button,
+  Tooltip,
+} from 'antd';
+
 import { ReactNode, memo } from 'react';
 
 import { getNumber } from '@/utils';
 import { IBaseTrees } from '../../interface';
-import { defaultFontMode } from '../../const';
+// import { defaultFontMode } from '../../const';
 import { handleTransformValue } from '../../utils';
 
 const { TextArea } = Input;
@@ -26,6 +37,7 @@ const AdapterComp = ({
   value,
   attribute,
   attributeOptions,
+  ExtraOptions,
   attributeRange,
   onChange,
 }: IBaseTrees & { onChange?: (item: any) => void }) => {
@@ -95,6 +107,26 @@ const AdapterComp = ({
           <input type='color' />
         </Wrapper>
       );
+    case 'ButtonTip':
+      return (
+        <div style={{ display: 'inline-block' }} className='font-restyle'>
+          <span>{title}</span>
+          <Tooltip title={(ExtraOptions as any)?.tip}>
+            <Button
+              shape='circle'
+              type={value ? 'primary' : 'default'}
+              onClick={() =>
+                onChange?.({
+                  attribute,
+                  value: value ? '' : ExtraOptions.value,
+                })
+              }
+            >
+              <ExtraOptions.IconName />
+            </Button>
+          </Tooltip>
+        </div>
+      );
     case 'SelectAndRadio': // 字体定制类型
       return (
         <Wrapper>
@@ -115,7 +147,7 @@ const AdapterComp = ({
                 </Option>
               ))}
             </Select>
-            <Radio.Group buttonStyle='solid' style={{ marginTop: '5px' }}>
+            {/* <Radio.Group buttonStyle='solid' style={{ marginTop: '5px' }}>
               {defaultFontMode.map((Comp) => (
                 <Radio.Button
                   key={Comp.id}
@@ -130,7 +162,7 @@ const AdapterComp = ({
                   <Comp.IconName />
                 </Radio.Button>
               ))}
-            </Radio.Group>
+            </Radio.Group> */}
           </div>
         </Wrapper>
       );

@@ -61,6 +61,7 @@ type TBaseTreesTypes =
   | 'SelectAndRadio'
   | 'Slider'
   | 'Radio'
+  | 'ButtonTip'
   | 'ColorPick';
 interface IBaseTrees {
   id: number | string;
@@ -69,6 +70,7 @@ interface IBaseTrees {
   attribute: keyof (CSSProperties & { text: string });
   value?: unknown;
   attributeOptions?: unknown;
+  ExtraOptions?: unknown | any;
   attributeRange?: {
     min: number;
     max: number;

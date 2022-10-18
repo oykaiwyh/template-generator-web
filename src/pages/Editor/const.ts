@@ -195,6 +195,39 @@ const baseAttributeTrees: IBaseTrees[] = [
     attributeOptions: defaultFontFamily,
   },
   {
+    id: '3-1',
+    title: '',
+    type: 'ButtonTip',
+    attribute: 'fontWeight',
+    ExtraOptions: {
+      IconName: BoldOutlined,
+      tip: '加粗',
+      value: 'bold',
+    },
+  },
+  {
+    id: '3-2',
+    title: '',
+    type: 'ButtonTip',
+    attribute: 'fontStyle',
+    ExtraOptions: {
+      IconName: ItalicOutlined,
+      tip: '斜体',
+      value: 'italic',
+    },
+  },
+  {
+    id: '3-4',
+    title: '',
+    type: 'ButtonTip',
+    attribute: 'textDecoration',
+    ExtraOptions: {
+      IconName: UnderlineOutlined,
+      tip: '下划线',
+      value: 'underline',
+    },
+  },
+  {
     id: 4,
     title: '行高:',
     type: 'Slider',
